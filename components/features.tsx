@@ -1,6 +1,5 @@
 "use client";
 
-import { useAnimateOnScroll } from "@/hooks/use-animate-on-scroll";
 import {
   BarChart3,
   ShieldCheck,
@@ -62,52 +61,37 @@ const features = [
 ];
 
 export function Features() {
-  const [ref, isVisible] = useAnimateOnScroll<HTMLDivElement>(0.1);
-
   return (
-    <section id="features" className="relative py-16 sm:py-24 lg:py-32 overflow-hidden">
-      {/* Subtle background accent */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[600px] rounded-full bg-primary/[0.02] blur-[100px] -z-10" />
-
-      <div ref={ref} className="mx-auto max-w-7xl px-5 lg:px-8">
-        <div
-          className={`text-center max-w-2xl mx-auto mb-12 sm:mb-20 ${
-            isVisible ? "animate-fade-up" : "opacity-0"
-          }`}
-        >
-          <div className="inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/5 px-4 py-1.5 text-sm font-medium text-primary mb-6">
-            <Zap className="h-3.5 w-3.5" />
+    <section id="features" className="py-12 sm:py-16 lg:py-20">
+      <div className="mx-auto max-w-7xl px-5 lg:px-8">
+        <div className="text-center max-w-2xl mx-auto mb-10 sm:mb-12">
+          <div className="inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/5 px-3 py-1 text-xs sm:text-sm font-medium text-primary mb-4">
+            <Zap className="h-3 w-3" />
             Возможности
           </div>
-          <h2 className="font-heading text-2xl font-extrabold text-foreground sm:text-4xl lg:text-[2.75rem] text-balance leading-tight">
-            Всё, что нужно для контроля
-            <br className="hidden sm:block" />
-            расходов на топливо
+          <h2 className="font-heading text-xl font-extrabold text-foreground sm:text-3xl lg:text-4xl text-balance leading-tight">
+            Всё, что нужно для контроля расходов на топливо
           </h2>
-          <p className="mt-4 sm:mt-5 text-base sm:text-lg text-muted-foreground leading-relaxed">
-            Мы создали инструмент, который закрывает все боли управления
-            топливными расходами — от первого литра до годового отчёта.
+          <p className="mt-3 sm:mt-4 text-sm sm:text-base text-muted-foreground leading-relaxed">
+            Инструмент для полного контроля топливных расходов от первого литра до годового отчёта.
           </p>
         </div>
 
-        <div className="grid gap-4 sm:gap-5 sm:grid-cols-2 lg:grid-cols-3">
-          {features.map((feature, i) => (
+        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {features.map((feature) => (
             <div
               key={feature.title}
-              className={`group relative rounded-2xl border border-border/60 bg-card p-6 sm:p-8 transition-all duration-300 hover:shadow-lg hover:border-primary/20 ${
-                isVisible ? "animate-fade-up" : "opacity-0"
-              }`}
-              style={{ animationDelay: `${i * 50}ms` }}
+              className="rounded-xl border border-border bg-card p-5 sm:p-6"
             >
               <div
-                className={`flex h-13 w-13 items-center justify-center rounded-2xl ${feature.color} ${feature.hoverColor} mb-6 transition-all duration-300`}
+                className={`flex h-11 w-11 items-center justify-center rounded-xl ${feature.color} mb-4`}
               >
-                <feature.icon className="h-6 w-6" />
+                <feature.icon className="h-5 w-5" />
               </div>
-              <h3 className="font-heading text-lg font-bold text-foreground mb-3">
+              <h3 className="font-heading text-base sm:text-lg font-bold text-foreground mb-2">
                 {feature.title}
               </h3>
-              <p className="text-sm text-muted-foreground leading-relaxed">
+              <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">
                 {feature.description}
               </p>
             </div>

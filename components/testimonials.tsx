@@ -1,6 +1,5 @@
 "use client";
 
-import { useAnimateOnScroll } from "@/hooks/use-animate-on-scroll";
 import { Star, Quote } from "lucide-react";
 
 const testimonials = [
@@ -31,74 +30,62 @@ const testimonials = [
 ];
 
 export function Testimonials() {
-  const [ref, isVisible] = useAnimateOnScroll<HTMLDivElement>(0.1);
-
   return (
     <section
       id="testimonials"
-      className="relative py-16 sm:py-24 lg:py-32 bg-card/60 border-y border-border/60"
+      className="py-12 sm:py-16 lg:py-20 bg-card/50 border-y border-border"
     >
-      <div ref={ref} className="mx-auto max-w-7xl px-5 lg:px-8">
-        <div
-          className={`text-center max-w-2xl mx-auto mb-12 sm:mb-20 ${
-            isVisible ? "animate-fade-up" : "opacity-0"
-          }`}
-        >
-          <div className="inline-flex items-center gap-2 rounded-full border border-accent/20 bg-accent/5 px-4 py-1.5 text-sm font-medium text-accent mb-6">
-            <Star className="h-3.5 w-3.5 fill-current" />
+      <div className="mx-auto max-w-7xl px-5 lg:px-8">
+        <div className="text-center max-w-2xl mx-auto mb-10 sm:mb-12">
+          <div className="inline-flex items-center gap-2 rounded-full border border-accent/20 bg-accent/5 px-3 py-1 text-xs sm:text-sm font-medium text-accent mb-4">
+            <Star className="h-3 w-3 fill-current" />
             Отзывы клиентов
           </div>
-          <h2 className="font-heading text-2xl font-extrabold text-foreground sm:text-4xl lg:text-[2.75rem] text-balance leading-tight">
+          <h2 className="font-heading text-xl font-extrabold text-foreground sm:text-3xl lg:text-4xl text-balance leading-tight">
             Нам доверяют 4 200+ компаний
           </h2>
-          <p className="mt-4 sm:mt-5 text-base sm:text-lg text-muted-foreground leading-relaxed">
-            Послушайте, что говорят наши клиенты о работе с NevaCard.
+          <p className="mt-3 sm:mt-4 text-sm sm:text-base text-muted-foreground leading-relaxed">
+            Что говорят наши клиенты о работе с NevaCard.
           </p>
         </div>
 
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {testimonials.map((t, i) => (
+        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {testimonials.map((t) => (
             <div
               key={t.name}
-              className={`group relative rounded-2xl border border-border/60 bg-background p-6 sm:p-8 transition-all duration-300 hover:shadow-lg hover:border-primary/20 ${
-                isVisible ? "animate-fade-up" : "opacity-0"
-              }`}
-              style={{ animationDelay: `${i * 50}ms` }}
+              className="rounded-xl border border-border bg-background p-5 sm:p-6"
             >
               {/* Quote icon */}
-              <Quote className="h-8 w-8 text-primary/10 mb-4" />
+              <Quote className="h-7 w-7 text-primary/10 mb-3" />
 
-              <div className="flex gap-0.5 mb-5">
+              <div className="flex gap-0.5 mb-4">
                 {Array.from({ length: t.rating }).map((_, j) => (
                   <Star
                     key={`star-${t.name}-${j}`}
-                    className="h-4 w-4 fill-accent text-accent"
+                    className="h-3.5 w-3.5 fill-accent text-accent"
                   />
                 ))}
               </div>
 
-              <blockquote className="text-foreground leading-relaxed mb-8 text-[15px]">
+              <blockquote className="text-foreground leading-relaxed mb-6 text-sm">
                 {`"${t.text}"`}
               </blockquote>
 
-              <div className="flex items-center gap-4 pt-6 border-t border-border/60">
-                <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-primary/8 font-heading font-bold text-primary text-sm">
+              <div className="flex items-center gap-3 pt-4 border-t border-border">
+                <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-primary/8 font-heading font-bold text-primary text-xs">
                   {t.name
                     .split(" ")
                     .map((n) => n[0])
                     .join("")}
                 </div>
                 <div className="flex-1">
-                  <p className="font-heading font-semibold text-sm text-foreground">
+                  <p className="font-heading font-semibold text-xs sm:text-sm text-foreground">
                     {t.name}
                   </p>
-                  <p className="text-xs text-muted-foreground">
-                    {t.role}, {t.company}
+                  <p className="text-[10px] sm:text-xs text-muted-foreground">
+                    {t.role}
                   </p>
                 </div>
-                <span className="hidden sm:inline text-[10px] font-medium text-muted-foreground/60 uppercase tracking-wider">
-                  {t.fleet}
-                </span>
               </div>
             </div>
           ))}

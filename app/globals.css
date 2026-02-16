@@ -58,35 +58,4 @@
   }
 }
 
-/* Optimized Animations with GPU acceleration */
-@keyframes fade-up {
-  from {
-    opacity: 0;
-    transform: translate3d(0, 20px, 0);
-  }
-  to {
-    opacity: 1;
-    transform: translate3d(0, 0, 0);
-  }
-}
-
-.animate-fade-up {
-  animation: fade-up 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-  will-change: opacity, transform;
-}
-
-/* Apply GPU acceleration globally */
-.transform-gpu {
-  transform: translateZ(0);
-  will-change: transform;
-}
-
-
-
-/* Optimized Glass morphism */
-.glass {
-  background: hsl(0 0% 100% / 0.7);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  transform: translateZ(0);
-}
+/* Remove all animations for faster load */
